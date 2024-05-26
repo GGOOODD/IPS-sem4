@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 
@@ -37,20 +37,44 @@ const Katalog = (props) => {
   let params = new URLSearchParams(props.location.search);
   let currentType = decodeURI(params.get("type"));
   let currentSearch = decodeURI(params.get("search"));
+
+  let listFilters = [];
   let info = [];
   let searchBaseOn = "";
   let inCart = false;
+  const cartlen = cart.length;
+  const prodlen = products.length;
   if (currentSearch == "null") {
     searchBaseOn = currentType;
-    for (let i = 0; i < products.length; i++) {
+    for (let i = 0; i < prodlen; i++) {
       if (products[i].type == currentType) {
         inCart = false;
-        for (let j = "0"; j < cart.length; j++) {
+        for (let j = 0; j < cartlen; j++) {
           if (products[i].name == products[cart[j].index].name) {
             inCart = true;
             break;
           }
         }
+
+        let filtlen = products[i].filters.length;
+        for (let j = 0; j < filtlen; j++) {
+          let flag = true;
+          let listfilterslen = listFilters.length;
+          for (let k = 0; k < listfilterslen; k++) {
+            if (listFilters[k].characteristicCategory == products[i].filters[j].characteristicCategory) {
+              listFilters[k].characteristics.add(products[i].filters[j].value);
+              flag = false;
+              break;
+            }
+          }
+          if (flag) {
+            let tempset = new Set();
+            tempset.add(products[i].filters[j].value);
+            let tempdict = {characteristicCategory: products[i].filters[j].characteristicCategory, characteristics: tempset};
+            listFilters.push(tempdict);
+          }
+        }
+
         let temp = {
           inCart: inCart,
           index: i,
@@ -63,15 +87,35 @@ const Katalog = (props) => {
     }
   } else {
     searchBaseOn = currentSearch;
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].name.search(currentSearch) != -1) {
+    for (let i = 0; i < prodlen; i++) {
+      if (products[i].name.toLowerCase().search(currentSearch.toLowerCase()) != -1) {
         inCart = false;
-        for (let j = 0; j < cart.length; j++) {
+        for (let j = 0; j < cartlen; j++) {
           if (products[i].name == products[cart[j].index].name) {
             inCart = true;
             break;
           }
         }
+
+        let filtlen = products[i].filters.length;
+        for (let j = 0; j < filtlen; j++) {
+          let flag = true;
+          let listfilterslen = listFilters.length;
+          for (let k = 0; k < listfilterslen; k++) {
+            if (listFilters[k].characteristicCategory == products[i].filters[j].characteristicCategory) {
+              listFilters[k].characteristics.add(products[i].filters[j].value);
+              flag = false;
+              break;
+            }
+          }
+          if (flag) {
+            let tempset = new Set();
+            tempset.add(products[i].filters[j].value);
+            let tempdict = {characteristicCategory: products[i].filters[j].characteristicCategory, characteristics: tempset};
+            listFilters.push(tempdict);
+          }
+        }
+
         let temp = {
           inCart: inCart,
           index: i,
@@ -82,6 +126,61 @@ const Katalog = (props) => {
         info.push(temp);
       }
     }
+  }
+
+  // currentFilter = {characteristicCategory: String, values: String[]}[];
+  const [currentFilter, setCurFilter] = useState([]);
+  const [currentList, setCurrentList] = useState(info);
+  let curFilter = [];
+
+  const updateList = () => {
+    let curInfo = structuredClone(info);
+    let len = curInfo.length;
+    let filtlen = curFilter.length;
+    let flag = false;
+    for (let i = 0; i < len; i++) {
+      flag = false;
+      for (let j = 0; j < curInfo[i].prod.filters.length; j++) {
+        for (let k = 0; k < filtlen; k++) {
+          // == currentFilter[k].CharacteristicCategory
+          if (curInfo[i].prod.filters[j].characteristicCategory == "Производитель") {
+            if (!curFilter[k].values.includes(curInfo[i].prod.filters[j].value)) {
+              curInfo.splice(i, 1);
+              i -= 1;
+              len -= 1;
+              flag = true;
+              break;
+            }
+          }
+        }
+        if (flag) break;
+      }
+    }
+    setCurrentList(curInfo);
+  }
+
+  // filter = {characteristicCategory: String, value: String};
+  const changeCurrentFilter = (filter, action) => {
+    curFilter = structuredClone(currentFilter);
+    let flag = true;
+    for (let i = 0; i < curFilter.length; i++) {
+      if (curFilter[i].characteristicCategory == filter.characteristicCategory) {
+        flag = false;
+        if (action == "remove") {
+          for (let j = 0; j < curFilter[i].values.length; j++) {
+            if (curFilter[i].values[j] == filter.value) {
+              curFilter[i].values.splice(j, 1);
+              if (curFilter[i].values.length == 0) curFilter.splice(i, 1);
+              break;
+            }
+          }
+        } else curFilter[i].values.push(filter.value);
+        break;
+      }
+    }
+    if (flag) curFilter.push({characteristicCategory: filter.characteristicCategory, values: [filter.value]});
+    updateList();
+    setCurFilter(curFilter);
   }
 
   return (
@@ -95,13 +194,15 @@ const Katalog = (props) => {
         <div className="katalog-container2">
           <span className="katalog-text">Фильтры</span>
           <CharacteristicCategory text="Производитель">
-            <Characteristic rootClassName="characteristic-root-class-name3"></Characteristic>
-            <Characteristic rootClassName="characteristic-root-class-name2"></Characteristic>
-            <Characteristic rootClassName="characteristic-root-class-name"></Characteristic>
-            <Characteristic rootClassName="characteristic-root-class-name1"></Characteristic>
-            <Characteristic rootClassName="characteristic-root-class-name11"></Characteristic>
-            <Characteristic rootClassName="characteristic-root-class-name10"></Characteristic>
-            <Characteristic rootClassName="characteristic-root-class-name4"></Characteristic>
+          {(() => {
+          const values = [];
+          if (listFilters.length == 0) return values;
+          const mas = Array.from(listFilters[0].characteristics);
+          for (let i = 0; i < mas.length; i++) {
+            values.push(<Characteristic name={mas[i]} characteristicCategory="Производитель" changeCurrentFilter={changeCurrentFilter} rootClassName="characteristic-root-class-name3"></Characteristic>);
+          }
+          return values;
+          })()}
           </CharacteristicCategory>
           <div className="katalog-container3"></div>
           <span className="katalog-text1">Цена</span>
@@ -119,22 +220,34 @@ const Katalog = (props) => {
             />
             <span className="katalog-text3">₽</span>
           </div>
-          <Characteristic text="Действие акции"></Characteristic>
-          <CharacteristicCategory></CharacteristicCategory>
+          <Characteristic name="Действие акции"></Characteristic>
+          {(() => {
+          let categories = [];
+          if (listFilters.length < 2) return categories;
+          for (let i = 1; i < listFilters.length; i++) {
+            let mas = Array.from(listFilters[i].characteristics);
+            let values = [];
+            for (let j = 0; j < mas.length; j++) {
+              values.push(<Characteristic name={mas[j]} characteristicCategory={listFilters[i].characteristicCategory} changeCurrentFilter={changeCurrentFilter} rootClassName="characteristic-root-class-name3"></Characteristic>)
+            }
+            categories.push(<CharacteristicCategory text={listFilters[i].characteristicCategory}>{values}</CharacteristicCategory>);
+          }
+          return categories;
+          })()}
         </div>
         <div className="katalog-container5">
-          <SearchInfo amount={info.length} searchInfo={searchBaseOn}></SearchInfo>
+          <SearchInfo amount={currentList.length} searchInfo={searchBaseOn}></SearchInfo>
           <div className="katalog-container6">
 
             {(() => {
-              if (info.length == 0) {
+              if (currentList.length == 0) {
                 return (
                 <span className="katalog-text-not-found">
                   По данному запросу ничего не нашлось
                 </span>
                 );
               } else { 
-                return info.map((card) => (
+                return currentList.map((card) => (
                   <ProductCard
                     inCart={card.inCart}
                     prod={card.prod}
