@@ -1,0 +1,38 @@
+.characteristic-container {
+  flex: 0 0 auto;
+  width: 220px;
+  height: 36px;
+  display: flex;
+  position: relative;
+  margin-top: 4px;
+  align-items: center;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  justify-content: flex-start;
+}
+.characteristic-text {
+  font-size: 16px;
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-left: 12px;
+}
+.characteristic-checkbox {
+  top: 0px;
+  right: 12px;
+  width: 24px;
+  bottom: 0px;
+  height: 24px;
+  margin: auto;
+  position: absolute;
+  border-radius: var(--dl-radius-radius-radius8);
+}
+
+
+
+
+
+
+
+

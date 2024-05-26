@@ -1,0 +1,142 @@
+.personal-account-orders-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.personal-account-orders-container1 {
+  flex: 0 0 auto;
+  width: 880px;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  min-height: 700px;
+  align-items: flex-start;
+  border-radius: var(--dl-radius-radius-radius8);
+  flex-direction: column;
+  background-color: #F5F5F5F5;
+}
+.personal-account-orders-text {
+  font-size: 20px;
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-unit);
+}
+.personal-account-orders-container2 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-halfunit);
+  position: relative;
+  align-items: center;
+  border-radius: var(--dl-radius-radius-radius8);
+  margin-bottom: var(--dl-space-space-halfunit);
+  justify-content: flex-start;
+  background-color: #ffffff;
+}
+.personal-account-orders-text1 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-right: var(--dl-space-space-unit);
+}
+.personal-account-orders-text2 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-right: var(--dl-space-space-halfunit);
+}
+.personal-account-orders-select {
+  border-color: #4C4C4C;
+  border-width: 1px;
+  margin-right: var(--dl-space-space-unit);
+  border-radius: var(--dl-radius-radius-radius8);
+}
+.personal-account-orders-container3 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+.personal-account-orders-text3 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.personal-account-orders-container4 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.personal-account-orders-container5 {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  position: relative;
+}
+.personal-account-orders-button {
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: 0.3s;
+  align-items: center;
+  border-width: 0px;
+  border-radius: var(--dl-radius-radius-radius8);
+  flex-direction: row;
+  justify-content: center;
+  background-color: #1A5A9A;
+}
+.personal-account-orders-button:hover {
+  background-color: #447BBA;
+}
+.personal-account-orders-image {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+.personal-account-orders-container6 {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  position: relative;
+}
+.personal-account-orders-button1 {
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: 0.3s;
+  align-items: center;
+  border-width: 0px;
+  border-radius: var(--dl-radius-radius-radius8);
+  flex-direction: row;
+  justify-content: center;
+  background-color: #1A5A9A;
+}
+.personal-account-orders-button1:hover {
+  background-color: #447BBA;
+}
+.personal-account-orders-image1 {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+.personal-account-orders-container7 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}

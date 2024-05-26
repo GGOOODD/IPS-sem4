@@ -1,0 +1,109 @@
+.order-history-container {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  position: relative;
+  align-items: flex-start;
+  border-radius: var(--dl-radius-radius-radius8);
+  background-color: #F0F0F0;
+}
+.order-history-container1 {
+  gap: 4px;
+  flex: 0 0 auto;
+  width: 530px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-right: var(--dl-space-space-fiveunits);
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.order-history-container2 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.order-history-container3 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.order-history-text {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.order-history-text01 {
+  font-family: "Inter";
+}
+.order-history-container4 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.order-history-text02 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.order-history-text03 {
+  font-family: "Inter";
+}
+.order-history-container5 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.order-history-text04 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.order-history-text05 {
+  font-family: "Inter";
+}
+.order-history-container6 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.order-history-text06 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.order-history-text07 {
+  font-family: "Inter";
+}
+.order-history-text08 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.order-history-text09 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.order-history-container7 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+

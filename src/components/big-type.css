@@ -1,0 +1,43 @@
+.big-type-container {
+  width: 340px;
+  height: 300px;
+  display: flex;
+  position: relative;
+}
+.big-type-button {
+  width: 340px;
+  height: 300px;
+  display: flex;
+  position: relative;
+  box-shadow: 0px 0px 10px 0px #d4d4d4;
+  border-width: 0px;
+  border-radius: var(--dl-radius-radius-radius8);
+  flex-direction: row;
+  background-color: #ffffff;
+}
+.big-type-image {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 200px;
+  bottom: 32px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  object-fit: cover;
+}
+.big-type-text {
+  left: 0px;
+  right: 0px;
+  bottom: var(--dl-space-space-unit);
+  margin: auto;
+  position: absolute;
+  font-size: 20px;
+  align-self: flex-end;
+  font-style: normal;
+  text-align: center;
+  font-family: "Inter";
+  font-weight: 500;
+}
+
+

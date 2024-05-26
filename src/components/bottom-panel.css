@@ -1,0 +1,123 @@
+.bottom-panel-container {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 148px;
+  display: flex;
+  position: relative;
+  margin-top: 80px;
+  align-items: center;
+  justify-content: center;
+  background-color: #616D7C;
+}
+.bottom-panel-container1 {
+  flex: 0 0 auto;
+  width: 1060px;
+  height: 95px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.bottom-panel-container2 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.bottom-panel-text {
+  color: rgb(255, 255, 255);
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.bottom-panel-text01 {
+  color: #e0e0e0;
+  font-size: 14px;
+  align-self: flex-start;
+}
+.bottom-panel-container3 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  margin-left: 252px;
+  flex-direction: column;
+}
+.bottom-panel-text09 {
+  color: rgb(255, 255, 255);
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.bottom-panel-container4 {
+  flex: 0 0 auto;
+  width: 80px;
+  height: 32px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+}
+.bottom-panel-image {
+  top: 0px;
+  right: 0px;
+  width: 32px;
+  bottom: 0px;
+  height: 32px;
+  margin: auto;
+  position: absolute;
+  object-fit: cover;
+}
+.bottom-panel-image1 {
+  top: 0px;
+  left: 0px;
+  width: 32px;
+  bottom: 0px;
+  height: 32px;
+  margin: auto;
+  position: absolute;
+  align-self: flex-start;
+  object-fit: cover;
+}
+.bottom-panel-container5 {
+  top: 0px;
+  flex: 0 0 auto;
+  right: 0px;
+  width: 160px;
+  bottom: 0px;
+  height: 95px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.bottom-panel-text10 {
+  color: rgb(255, 255, 255);
+  margin-bottom: 12px;
+}
+.bottom-panel-navlink {
+  display: contents;
+}
+.bottom-panel-component {
+  text-decoration: none;
+}
+.bottom-panel-root-class-name {
+  left: 0px;
+  bottom: 0px;
+  position: static;
+  align-self: center;
+}
+.bottom-panel-root-class-name1 {
+  position: 0px;
+}
+.bottom-panel-root-class-name2 {
+  align-self: center;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+.upper-panel-personal-account-container {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 76px;
+  display: flex;
+  position: relative;
+  align-self: center;
+  box-shadow: 0px 0px 8px 4px #d4d4d4;
+  align-items: center;
+  margin-bottom: 40px;
+  justify-content: center;
+  background-color: #F0F0F0;
+}
+.upper-panel-personal-account-container1 {
+  top: 0px;
+  flex: 0 0 auto;
+  left: 0px;
+  right: 0px;
+  width: 1060px;
+  bottom: 0px;
+  height: 60px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+.upper-panel-personal-account-navlink {
+  display: contents;
+}
+.upper-panel-personal-account-image {
+  top: 0px;
+  left: 0px;
+  width: 56px;
+  height: 60px;
+  position: absolute;
+  object-fit: cover;
+  text-decoration: none;
+}
+.upper-panel-personal-account-container2 {
+  gap: var(--dl-space-space-twounits);
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.upper-panel-personal-account-navlink1 {
+  display: contents;
+}
+.upper-panel-personal-account-component {
+  text-decoration: none;
+}
+.upper-panel-personal-account-navlink2 {
+  display: contents;
+}
+.upper-panel-personal-account-component1 {
+  text-decoration: none;
+}
+.upper-panel-personal-account-navlink3 {
+  display: contents;
+}
+.upper-panel-personal-account-component2 {
+  text-decoration: none;
+}
+

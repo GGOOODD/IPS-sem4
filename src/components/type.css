@@ -1,0 +1,41 @@
+.type-container {
+  display: flex;
+  position: relative;
+}
+.type-button {
+  width: 250px;
+  height: 200px;
+  display: flex;
+  position: relative;
+  box-shadow: 0px 0px 10px 0px #d4d4d4;
+  border-width: 0px;
+  border-radius: var(--dl-radius-radius-radius8);
+  flex-direction: row;
+  background-color: #ffffff;
+}
+.type-image {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 160px;
+  bottom: 20px;
+  height: auto;
+  margin: auto;
+  position: absolute;
+  object-fit: cover;
+}
+.type-text {
+  left: 0px;
+  right: 0px;
+  bottom: 9px;
+  margin: auto;
+  position: absolute;
+  align-self: flex-end;
+  text-align: center;
+}
+
+
+
+
+
+

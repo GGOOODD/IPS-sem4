@@ -1,0 +1,72 @@
+.red-button-container {
+  display: flex;
+  position: relative;
+}
+.red-button-button {
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-shadow: 0px 4px 4px 0px #d4d4d4;
+  transition: 0.3s;
+  border-width: 0px;
+  border-radius: var(--dl-radius-radius-radius8);
+  flex-direction: row;
+  background-color: #EA431B;
+}
+.red-button-button:hover {
+  background-color: #EE6A4A;
+}
+.red-button-text {
+  width: 100%;
+  height: auto;
+  align-self: center;
+  font-style: normal;
+  text-align: center;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.red-button-root-class-name {
+  width: auto;
+  height: 48px;
+}
+.red-button-root-class-name1 {
+  width: 130px;
+  height: 44px;
+}
+.red-button-root-class-name2 {
+  width: 130px;
+  height: 44px;
+}
+.red-button-root-class-name3 {
+  width: 200px;
+  height: 48px;
+}
+.red-button-root-class-name4 {
+  width: 200px;
+  height: 48px;
+}
+.red-button-root-class-name5 {
+  width: 200px;
+  height: 48px;
+}
+.red-button-root-class-name6 {
+  width: 200px;
+  height: 48px;
+}
+.red-button-root-class-name7 {
+  width: 200px;
+  height: 48px;
+}
+.red-button-root-class-name8 {
+  width: 200px;
+  height: 48px;
+}
+.red-button-root-class-name9 {
+  width: 200px;
+  height: 48px;
+}
+.red-button-root-class-name10 {
+  width: 200px;
+  height: 48px;
+}

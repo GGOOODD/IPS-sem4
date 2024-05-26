@@ -1,0 +1,294 @@
+.personal-account-info-container {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  position: relative;
+  align-items: flex-start;
+  border-radius: var(--dl-radius-radius-radius8);
+  margin-bottom: 200px;
+  flex-direction: column;
+  background-color: #F5F5F5;
+}
+.personal-account-info-container01 {
+  flex: 0 0 auto;
+  width: 880px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.personal-account-info-text {
+  font-size: 20px;
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-unit);
+}
+.personal-account-info-container02 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.personal-account-info-image {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  margin-right: var(--dl-space-space-unit);
+  border-radius: var(--dl-radius-radius-radius8);
+}
+.personal-account-info-container03 {
+  flex: 0 0 auto;
+  width: 482px;
+  height: 350px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.personal-account-info-text01 {
+  font-family: "Inter";
+}
+.personal-account-info-text02 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.personal-account-info-text03 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 400;
+}
+.personal-account-info-text04 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.personal-account-info-text05 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 400;
+}
+.personal-account-info-text06 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.personal-account-info-text07 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 400;
+}
+.personal-account-info-text08 {
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+}
+.personal-account-info-container04 {
+  flex: 0 0 auto;
+  left: 0px;
+  width: 100%;
+  bottom: 0px;
+  height: 48px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: flex-start;
+}
+.personal-account-info-container05 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.personal-account-info-container06 {
+  top: 0px;
+  flex: 0 0 auto;
+  right: 0px;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+}
+.personal-account-info-container07 {
+  flex: 0 0 auto;
+  width: 700px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.personal-account-info-text09 {
+  font-size: 20px;
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-unit);
+}
+.personal-account-info-container08 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  align-self: center;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.personal-account-info-container09 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.personal-account-info-text10 {
+  font-family: "Inter";
+}
+.personal-account-info-textinput {
+  width: 270px;
+  font-size: 14px;
+  box-shadow: 0px 0px 8px 0px #d4d4d4;
+  font-family: "Inter";
+  border-width: 0px;
+  border-radius: var(--dl-radius-radius-radius8);
+}
+.personal-account-info-text11 {
+  align-self: center;
+  font-style: normal;
+  margin-top: var(--dl-space-space-unit);
+  font-family: "Inter";
+  font-weight: 600;
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.personal-account-info-container10 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  width: 340px;
+  height: auto;
+  display: flex;
+  align-self: center;
+  align-items: flex-end;
+  margin-bottom: var(--dl-space-space-unit);
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.personal-account-info-select {
+  align-self: flex-start;
+  border-radius: var(--dl-radius-radius-radius8);
+}
+.personal-account-info-container11 {
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.personal-account-info-container12 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.personal-account-info-container13 {
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.personal-account-info-container14 {
+  flex: 0 0 auto;
+  width: 340px;
+  height: 40px;
+  display: flex;
+  position: relative;
+  align-self: center;
+  margin-top: var(--dl-space-space-unit);
+  align-items: center;
+  justify-content: flex-start;
+}
+.personal-account-info-container15 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.personal-account-info-container16 {
+  top: 0px;
+  flex: 0 0 auto;
+  right: 0px;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+}
+.personal-account-info-container17 {
+  flex: 0 0 auto;
+  width: 700px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.personal-account-info-text12 {
+  font-size: 20px;
+  font-style: normal;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-bottom: var(--dl-space-space-unit);
+}
+.personal-account-info-container18 {
+  gap: var(--dl-space-space-halfunit);
+  flex: 0 0 auto;
+  display: flex;
+  align-self: center;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.personal-account-info-container19 {
+  flex: 0 0 auto;
+  width: 450px;
+  height: 40px;
+  display: flex;
+  position: relative;
+  align-self: center;
+  margin-top: var(--dl-space-space-unit);
+  align-items: center;
+  justify-content: flex-start;
+}
+.personal-account-info-container20 {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+}
+.personal-account-info-container21 {
+  top: 0px;
+  flex: 0 0 auto;
+  right: 0px;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+}
+.personal-account-info-root-class-name {
+  margin-bottom: 0px;
+}
