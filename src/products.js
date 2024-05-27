@@ -70,6 +70,10 @@ const products = [
                 value: "EART"
             },
             {
+                characteristicCategory: "Цена",
+                value: "Действие акции"
+            },
+            {
                 characteristicCategory: "Количество струн",
                 value: "6"
             },

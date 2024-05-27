@@ -5,13 +5,8 @@ import PropTypes from 'prop-types'
 
 import './in-cart-button.css'
 
-//const [isInCart, setIsInCart] = useState(props.inCart);
+
 const InCartButton = (props) => {
-  //let flag = false;
-  //if (props.prod.name == "EART EGLP-610 Gunmetal Black") {
-  //  flag = true;
-  //}
-  // const [isInCart, setIsInCart] = useState(flag);
 
   return (
     <div className={`in-cart-button-container ${props.rootClassName} `}>

@@ -6,6 +6,9 @@ import PropTypes from 'prop-types'
 import InCartButton from './in-cart-button'
 import './product-card.css'
 
+//return <div className="product-card-container2" style={{display: "flex", width: "80%", flexDirection: "row-reverse"}}>
+//<div style={{width: "50%", justifyContent:"space-between"}}>{option}</div>
+//</div>;
 const ProductCard = (props) => {
   return (
     <div className={`product-card-container ${props.rootClassName} `}>
@@ -29,12 +32,10 @@ const ProductCard = (props) => {
             option = <span id="cost" className="product-card-text2">{props.prod.price.concat(" р.")}</span>;
             return option;
           }
-          option.push(<span className="product-card-text3">{props.prod.oldPrice.concat(" р.")}</span>);
           option.push(<span id="cost" className="product-card-text2">{props.prod.price.concat(" р.")}</span>);
+          option.push(<span className="product-card-text3" style={{marginRight: "12px"}}>{props.prod.oldPrice.concat(" р.")}</span>);
 
-          return <div className="product-card-container2" style={{display: "flex", width: "80%", flexDirection: "row-reverse"}}>
-            <div style={{width: "50%", justifyContent:"space-between"}}>{option}</div>
-          </div>;
+          return <div className="product-card-container2" style={{display: "flex", width: "100%",  justifyContent: "right", flexDirection: "row-reverse"}}>{option}</div>;
           })()}
       <InCartButton rootClassName="in-cart-button-root-class-name"
       prod={props.prod}

@@ -59,6 +59,7 @@ const Katalog = (props) => {
 
         let filtlen = products[i].filters.length;
         for (let j = 0; j < filtlen; j++) {
+          if (products[i].filters[j].value == "Действие акции") continue;
           let flag = true;
           let listfilterslen = listFilters.length;
           for (let k = 0; k < listfilterslen; k++) {
@@ -79,7 +80,7 @@ const Katalog = (props) => {
         let temp = {
           //inCart: inCart,
           index: i,
-          indexInList: i,
+          indexInList: inCartList.length-1,
           prod: products[i],
           navigate: "/product/?name=".concat(products[i].name)
           // className="kategory-component1"
@@ -90,7 +91,9 @@ const Katalog = (props) => {
   } else {
     searchBaseOn = currentSearch;
     for (let i = 0; i < prodlen; i++) {
-      if (products[i].name.toLowerCase().search(currentSearch.toLowerCase()) != -1) {
+      let prodname = structuredClone(products[i].name);
+      let searchname = currentSearch.toLowerCase();
+      if (prodname.toLowerCase().search(searchname) != -1) {
         let inCart = false;
         for (let j = 0; j < cartlen; j++) {
           if (products[i].name == products[cart[j].index].name) {
@@ -102,6 +105,7 @@ const Katalog = (props) => {
 
         let filtlen = products[i].filters.length;
         for (let j = 0; j < filtlen; j++) {
+          if (products[i].filters[j].value == "Действие акции") continue;
           let flag = true;
           let listfilterslen = listFilters.length;
           for (let k = 0; k < listfilterslen; k++) {
@@ -122,7 +126,7 @@ const Katalog = (props) => {
         let temp = {
           //inCart: inCart,
           index: i,
-          indexInList: i,
+          indexInList: inCartList.length-1,
           prod: products[i],
           navigate: "/product/?name=".concat(products[i].name)
           // className="kategory-component1"
@@ -134,9 +138,12 @@ const Katalog = (props) => {
 
   // currentFilter = {characteristicCategory: String, values: String[]}[];
   const [currentFilter, setCurFilter] = useState([]);
+  const [currentPrice, setCurrentPrice] = useState({min: -1, max: 9999999});
   const [currentList, setCurrentList] = useState(info);
   const [currentInCart, setCurrentInCart] = useState(inCartList);
-  let curFilter = [];
+
+  let curFilter = structuredClone(currentFilter);
+  let curPrice = structuredClone(currentPrice);
 
   const updateList = () => {
     let curInfo = structuredClone(info);
@@ -144,23 +151,36 @@ const Katalog = (props) => {
     let len = curInfo.length;
     let filtlen = curFilter.length;
     let flag = false;
+    let count = 0;
     for (let i = 0; i < len; i++) {
+      if (parseInt(curInfo[i].prod.price) < curPrice.min || parseInt(curInfo[i].prod.price) > curPrice.max) {
+        curInfo.splice(i, 1);
+        curInCart.splice(i, 1);
+        i -= 1;
+        len -= 1;
+        continue;
+      }
+      count = 0;
       flag = false;
       curInfo[i].indexInList = i;
       for (let j = 0; j < curInfo[i].prod.filters.length; j++) {
         for (let k = 0; k < filtlen; k++) {
           if (curInfo[i].prod.filters[j].characteristicCategory == curFilter[k].characteristicCategory) {
+            count += 1;
             if (!curFilter[k].values.includes(curInfo[i].prod.filters[j].value)) {
-              curInfo.splice(i, 1);
-              curInCart.splice(i, 1);
-              i -= 1;
-              len -= 1;
+              count = -1;
               flag = true;
               break;
             }
           }
         }
         if (flag) break;
+      }
+      if (count != filtlen) {
+        curInfo.splice(i, 1);
+        curInCart.splice(i, 1);
+        i -= 1;
+        len -= 1;
       }
     }
     setCurrentInCart(curInCart);
@@ -191,6 +211,13 @@ const Katalog = (props) => {
     setCurFilter(curFilter);
   }
 
+  const changeCurrentPrice = (num, type) => {
+    curPrice = structuredClone(currentPrice);
+    curPrice[type] = parseInt(num);
+    updateList();
+    setCurrentPrice(curPrice);
+  }
+
   return (
     <div className="katalog-container">
       <Helmet>
@@ -218,17 +245,31 @@ const Katalog = (props) => {
             <input
               type="number"
               name="mn_price"
+              onKeyDown={(event) => {if ( ['+','-','e'].includes( event.key ) ) event.preventDefault()}}
+              onPaste={(event) => {let paste = (event.clipboardData || window.clipboardData).getData("text"); if ( ['+','-','e'].includes( paste ) ) event.preventDefault()}}
+              onChange={(event) => {
+                changeCurrentPrice(event.target.value, "min");
+              }}
+              min="0"
+              max="9999999"
               className="katalog-textinput input"
             />
             <span className="katalog-text2">-</span>
             <input
               type="number"
               name="mx_price"
+              onKeyDown={(event) => {if ( ['+','-','e'].includes( event.key ) ) event.preventDefault()}}
+              onPaste={(event) => {let paste = (event.clipboardData || window.clipboardData).getData("text"); if ( ['+','-','e'].includes( paste ) ) event.preventDefault()}}
+              onChange={(event) => {
+                changeCurrentPrice(event.target.value, "max");
+              }}
+              min="0"
+              max="9999999"
               className="katalog-textinput1 input"
             />
             <span className="katalog-text3">₽</span>
           </div>
-          <Characteristic name="Действие акции"></Characteristic>
+          <Characteristic name="Действие акции" characteristicCategory="Цена" changeCurrentFilter={changeCurrentFilter} rootClassName="characteristic-root-class-name3"></Characteristic>
           {(() => {
           const categories = [];
           if (listFilters.length < 2) return categories;

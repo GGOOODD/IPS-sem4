@@ -9,6 +9,14 @@ import './personal-account-info.css'
 const PersonalAccountInfo = (props) => {
   const [isPage, setIsPage] = useState(0)
   const [isChosen, setIsChosen] = useState(0)
+
+  const handleSel = (event) => {
+    let sel = event.target.value;
+    if (sel == "Проспект") setIsChosen(0);
+    else if (sel == "Улица") setIsChosen(1);
+    else setIsChosen(2);
+  }
+
   return (
     <div className={`personal-account-info-container ${props.rootClassName} `}>
       {isPage === 0 && (
@@ -106,7 +114,7 @@ const PersonalAccountInfo = (props) => {
               textinputPlaceholder="Город"
               className=""
             ></MyInput>
-            <select className="personal-account-info-select">
+            <select onChange={handleSel.bind(this)} className="personal-account-info-select">
               <option value="Проспект" className="">
                 Проспект
               </option>

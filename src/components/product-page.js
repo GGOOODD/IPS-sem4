@@ -9,7 +9,7 @@ import './product-page.css'
 
 const products = require("../products");
 
-
+//<span className="product-page-text11">{props.price}</span>
 
 const ProductPage = (props) => {
   return (
@@ -44,11 +44,23 @@ const ProductPage = (props) => {
             </div>
           </div>
           <div className="product-page-container08">
-            <span className="product-page-text11">{props.price}</span>
+            {(() => {
+            let option = [];
+            if (props.oldPrice == "") {
+              option = <span id="cost" className="product-page-text11">{props.price}</span>;
+              return option;
+            }
+            option.push(<span id="cost" className="product-page-text11">{props.price}</span>);
+            option.push(<span className="product-page-text-old-price" style={{marginRight: "12px"}}>{props.oldPrice.concat(" р.")}</span>);
+
+            return <div className="product-page-container-cost" style={{flexDirection: "row-reverse"}}>{option}</div>;
+            })()}
             <InCartButton
               rootClassName="in-cart-button-root-class-name1"
               className=""
-              inCart={props.inCart}
+              indexInList={0}
+              currentInCart={props.currentInCart}
+              setCurrentInCart={props.setCurrentInCart}
               func={props.func}
             ></InCartButton>
           </div>
@@ -59,10 +71,17 @@ const ProductPage = (props) => {
           <span className="">Характеристики</span>
           <br className=""></br>
         </span>
-
-        {products[props.index].filters.map((card) => (
-          <span className="product-page-text15">{card.characteristicCategory.concat(": ", card.value)}</span>
-        ))}
+        
+        {(() => {
+          const mas = [];
+          const filtlen = products[props.index].filters.length;
+          for (let i = 0; i < filtlen; i++)
+            if (products[props.index].filters[i].value != "Действие акции") {
+              let filter = products[props.index].filters[i];
+              mas.push(<span className="product-page-text15">{filter.characteristicCategory.concat(": ", filter.value)}</span>);
+            }
+          return mas;
+        })()}
 
       </div>
       <div className="product-page-container10">

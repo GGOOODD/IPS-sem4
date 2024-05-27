@@ -1,6 +1,7 @@
 .red-button-container {
   display: flex;
   position: relative;
+  
 }
 .red-button-button {
   color: #ffffff;
@@ -13,9 +14,14 @@
   border-radius: var(--dl-radius-radius-radius8);
   flex-direction: row;
   background-color: #EA431B;
+  cursor: pointer;
 }
 .red-button-button:hover {
   background-color: #EE6A4A;
+}
+.red-button-button:disabled {
+  background-color: #EE6A4A;
+  cursor: default;
 }
 .red-button-text {
   width: 100%;

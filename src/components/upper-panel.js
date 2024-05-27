@@ -150,7 +150,7 @@ const UpperPanel = (props) => {
             className="upper-panel-textinput input"
             id="search"
           />
-          <button onClick={search} type="button" className="upper-panel-button button">
+          <button onClick={search} type="button" className="upper-panel-button button" style={{ cursor: "pointer" }}>
             <img alt="image" src="/light.svg" className="upper-panel-image2" />
           </button>
         </div>

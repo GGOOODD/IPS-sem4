@@ -11,13 +11,12 @@ const TotalPriceInCart = (props) => {
     <div className={`total-price-in-cart-container ${props.rootClassName} `}>
       <span className="total-price-in-cart-text">Общая сумма</span>
       <span className="total-price-in-cart-text1">{props.totalPrice}</span>
-      <Link to="/checkout" className="total-price-in-cart-navlink">
-        <RedButton
-          text="Оформить заказ"
-          rootClassName="red-button-root-class-name"
-          className="total-price-in-cart-component"
-        ></RedButton>
-      </Link>
+      <RedButton
+        text="Оформить заказ"
+        totalPrice={props.totalPrice}
+        rootClassName="red-button-root-class-name"
+        className="total-price-in-cart-component"
+      ></RedButton>
     </div>
   )
 }

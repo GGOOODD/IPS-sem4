@@ -23,8 +23,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  box-shadow: 0px 0px 4px 0px #d4d4d4;
 }
 .product-card-image {
   width: 200px;
@@ -41,7 +39,7 @@
   margin-left: 26px;
 }
 .product-card-text1 {
-  height: 40px;
+  height: 36px;
   align-self: flex-start;
   font-style: normal;
   font-family: "Inter";
@@ -55,11 +53,15 @@
   font-family: "Inter";
   font-weight: 700;
   margin-right: 26px;
-  margin-bottom: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 .product-card-text3 {
   fill: #4C4C4C;
   color: #4C4C4C;
   font-size: 14px;
   font-family: "Inter";
+  padding-top: 3px;
+  text-decoration: line-through;
+  text-decoration-color: #4C4C4C;
 }

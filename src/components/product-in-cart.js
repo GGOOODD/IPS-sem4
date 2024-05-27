@@ -4,10 +4,6 @@ import PropTypes from 'prop-types'
 
 import './product-in-cart.css'
 
-// const updateCard = (name, cost, amount) => {
-//  let el = document.querySelector('[id="totalCost'.concat(name, '"]'))
-//  el.textContent = String(parseInt(cost)*amount).concat(" р.");
-//}
 
 const ProductInCart = (props) => {
 
@@ -19,6 +15,8 @@ const ProductInCart = (props) => {
         alt={props.imageAltProduct}
         src={props.imageSrcProduct}
         className="product-in-cart-image"
+        onClick={() => window.location.href = "/product/?name=".concat(props.name)}
+        style={{cursor: "pointer"}}
       />
       <div className="product-in-cart-container1">
         <span className="product-in-cart-text">{props.type}</span>

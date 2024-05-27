@@ -406,3 +406,22 @@
 .product-page-root-class-name {
   min-height: 600px;
 }
+.product-page-container-cost {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.product-page-text-old-price {
+  fill: #4C4C4C;
+  color: #4C4C4C;
+  font-size: 14px;
+  font-family: "Inter";
+  padding-top: 3px;
+  text-decoration: line-through;
+  text-decoration-color: #4C4C4C;
+  position: absolute;
+  left: -70px;
+}

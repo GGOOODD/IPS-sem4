@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 
@@ -45,6 +45,8 @@ const Product = (props) => {
     }
   }
 
+  const [currentInCart, setCurrentInCart] = useState([inCart]);
+
   return (
     <div className="product-container">
       <Helmet>
@@ -56,6 +58,7 @@ const Product = (props) => {
         name={products[index].name}
         type={products[index].type}
         price={products[index].price.concat(" р.")}
+        oldPrice={products[index].oldPrice}
         guarantee={products[index].guarantee}
         description={products[index].description}
         manufacturer={products[index].manufacturer}
@@ -63,7 +66,9 @@ const Product = (props) => {
         imageSrcProduct={products[index].image}
         func={() => addToCart(index)}
         index={index}
-        inCart={inCart}
+        indexInList={0}
+        currentInCart={currentInCart}
+        setCurrentInCart={setCurrentInCart}
       ></ProductPage>
       <BottomPanel rootClassName="bottom-panel-root-class-name3"></BottomPanel>
     </div>
