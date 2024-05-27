@@ -25,14 +25,20 @@ const Home = (props) => {
         >
           <div data-thq="slider-wrapper" className="swiper-wrapper">
             <div
+              onClick={() => window.location.href = "/katalog/?sale=Распродажа"}
+              style={{cursor: "pointer"}}
               data-thq="slider-slide"
               className="home-slider-slide swiper-slide"
             ></div>
             <div
+              onClick={() => window.location.href = "/katalog/?sale=Распродажа"}
+              style={{cursor: "pointer"}}
               data-thq="slider-slide"
               className="home-slider-slide1 swiper-slide"
             ></div>
             <div
+              onClick={() => window.location.href = "/katalog/?sale=Распродажа"}
+              style={{cursor: "pointer"}}
               data-thq="slider-slide"
               className="home-slider-slide2 swiper-slide"
             ></div>

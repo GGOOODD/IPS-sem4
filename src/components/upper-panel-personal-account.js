@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import UpperButton from './upper-button'
 import './upper-panel-personal-account.css'
 
+
 const UpperPanelPersonalAccount = (props) => {
   return (
     <div
@@ -43,14 +44,14 @@ const UpperPanelPersonalAccount = (props) => {
             ></UpperButton>
           </Link>
         </div>
-        <Link to="/" className="upper-panel-personal-account-navlink3">
+        <div onClick={() => props.openPopup()}>
           <UpperButton
             text="Выход из аккаунта"
             imageSrc1="/light10.svg"
             rootClassName="upper-button-root-class-name3"
             className="upper-panel-personal-account-component2"
           ></UpperButton>
-        </Link>
+        </div>
       </div>
     </div>
   )

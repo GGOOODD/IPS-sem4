@@ -37,6 +37,7 @@ const Katalog = (props) => {
   let params = new URLSearchParams(props.location.search);
   let currentType = decodeURI(params.get("type"));
   let currentSearch = decodeURI(params.get("search"));
+  let currentSale = decodeURI(params.get("sale"));
 
   let listFilters = [];
   let info = [];
@@ -44,94 +45,76 @@ const Katalog = (props) => {
   let inCartList = [];
   const cartlen = cart.length;
   const prodlen = products.length;
-  if (currentSearch == "null") {
+
+  const addProductInInfo = (i) => {
+    let inCart = false;
+    for (let j = 0; j < cartlen; j++) {
+      if (products[i].name == products[cart[j].index].name) {
+        inCart = true;
+        break;
+      }
+    }
+    inCartList.push(inCart);
+
+    let filtlen = products[i].filters.length;
+    for (let j = 0; j < filtlen; j++) {
+      if (products[i].filters[j].value == "Действие акции") continue;
+      let flag = true;
+      let listfilterslen = listFilters.length;
+      for (let k = 0; k < listfilterslen; k++) {
+        if (listFilters[k].characteristicCategory == products[i].filters[j].characteristicCategory) {
+          listFilters[k].characteristics.add(products[i].filters[j].value);
+          flag = false;
+          break;
+        }
+      }
+      if (flag) {
+        let tempset = new Set();
+        tempset.add(products[i].filters[j].value);
+        let tempdict = {characteristicCategory: products[i].filters[j].characteristicCategory, characteristics: tempset};
+        listFilters.push(tempdict);
+      }
+    }
+
+    let temp = {
+      index: i,
+      indexInList: inCartList.length-1,
+      prod: products[i],
+      navigate: "/product/?name=".concat(products[i].name)
+      // className="kategory-component1"
+    }
+    info.push(temp);
+  }
+
+  if (currentSale == "null" && currentSearch == "null") {
     searchBaseOn = currentType;
     for (let i = 0; i < prodlen; i++) {
       if (products[i].type == currentType) {
-        let inCart = false;
-        for (let j = 0; j < cartlen; j++) {
-          if (products[i].name == products[cart[j].index].name) {
-            inCart = true;
-            break;
-          }
-        }
-        inCartList.push(inCart);
-
-        let filtlen = products[i].filters.length;
-        for (let j = 0; j < filtlen; j++) {
-          if (products[i].filters[j].value == "Действие акции") continue;
-          let flag = true;
-          let listfilterslen = listFilters.length;
-          for (let k = 0; k < listfilterslen; k++) {
-            if (listFilters[k].characteristicCategory == products[i].filters[j].characteristicCategory) {
-              listFilters[k].characteristics.add(products[i].filters[j].value);
-              flag = false;
-              break;
-            }
-          }
-          if (flag) {
-            let tempset = new Set();
-            tempset.add(products[i].filters[j].value);
-            let tempdict = {characteristicCategory: products[i].filters[j].characteristicCategory, characteristics: tempset};
-            listFilters.push(tempdict);
-          }
-        }
-
-        let temp = {
-          //inCart: inCart,
-          index: i,
-          indexInList: inCartList.length-1,
-          prod: products[i],
-          navigate: "/product/?name=".concat(products[i].name)
-          // className="kategory-component1"
-        }
-        info.push(temp);
+        addProductInInfo(i);
       }
     }
-  } else {
+  } else if (currentSale == "null") {
     searchBaseOn = currentSearch;
     for (let i = 0; i < prodlen; i++) {
       let prodname = structuredClone(products[i].name);
       let searchname = currentSearch.toLowerCase();
       if (prodname.toLowerCase().search(searchname) != -1) {
-        let inCart = false;
-        for (let j = 0; j < cartlen; j++) {
-          if (products[i].name == products[cart[j].index].name) {
-            inCart = true;
-            break;
-          }
+        addProductInInfo(i);
+      }
+    }
+  } else {
+    searchBaseOn = currentSale;
+    for (let i = 0; i < prodlen; i++) {
+      let flag = false;
+      let filtlen = products[i].filters.length;
+      for (let j = 0; j < filtlen; j++) {
+        if (products[i].filters[j].value == "Действие акции") {
+          flag = true;
+          break;
         }
-        inCartList.push(inCart);
-
-        let filtlen = products[i].filters.length;
-        for (let j = 0; j < filtlen; j++) {
-          if (products[i].filters[j].value == "Действие акции") continue;
-          let flag = true;
-          let listfilterslen = listFilters.length;
-          for (let k = 0; k < listfilterslen; k++) {
-            if (listFilters[k].characteristicCategory == products[i].filters[j].characteristicCategory) {
-              listFilters[k].characteristics.add(products[i].filters[j].value);
-              flag = false;
-              break;
-            }
-          }
-          if (flag) {
-            let tempset = new Set();
-            tempset.add(products[i].filters[j].value);
-            let tempdict = {characteristicCategory: products[i].filters[j].characteristicCategory, characteristics: tempset};
-            listFilters.push(tempdict);
-          }
-        }
-
-        let temp = {
-          //inCart: inCart,
-          index: i,
-          indexInList: inCartList.length-1,
-          prod: products[i],
-          navigate: "/product/?name=".concat(products[i].name)
-          // className="kategory-component1"
-        }
-        info.push(temp);
+      }
+      if (flag) {
+        addProductInInfo(i);
       }
     }
   }

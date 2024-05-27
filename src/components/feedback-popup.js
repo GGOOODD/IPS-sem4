@@ -8,9 +8,11 @@ const FeedbackPopup = (props) => {
   return (
     <div className={`feedback-popup-container ${props.rootClassName} `}>
       <div className="feedback-popup-container1">
-        <button type="button" className="feedback-popup-button button">
-          <img alt="image" src="/light9.svg" className="feedback-popup-image" />
-        </button>
+        <div onClick={() => props.closePopup()}>
+          <button type="button" className="feedback-popup-button button">
+            <img alt="image" src="/light9.svg" className="feedback-popup-image" />
+          </button>
+        </div>
         <span className="feedback-popup-text">
           Ваше сообщение передано администрации и скоро вы получите ответ на
           вашу эл. почту.

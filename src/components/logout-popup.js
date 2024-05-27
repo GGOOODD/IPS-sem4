@@ -9,21 +9,27 @@ const LogoutPopup = (props) => {
   return (
     <div className={`logout-popup-container ${props.rootClassName} `}>
       <div className="logout-popup-container1">
-        <button type="button" className="logout-popup-button button">
-          <img alt="image" src="/light9.svg" className="logout-popup-image" />
-        </button>
+        <div onClick={() => props.closePopup()}>
+          <button type="button" className="logout-popup-button button" style={{cursor: "pointer"}}>
+            <img alt="image" src="/light9.svg" className="logout-popup-image" />
+          </button>
+        </div>
         <span className="logout-popup-text">
           Вы действительно хотите выйти из аккаунта?
         </span>
         <div className="logout-popup-container2">
-          <BaseButton
-            rootClassName="base-button-root-class-name25"
-            text="Отмена"
-          ></BaseButton>
-          <BaseButton
-            rootClassName="base-button-root-class-name26"
-            text="Выйти"
-          ></BaseButton>
+          <div onClick={() => props.closePopup()}>
+            <BaseButton
+              rootClassName="base-button-root-class-name25"
+              text="Отмена"
+            ></BaseButton>
+          </div>
+          <div onClick={() => window.location.href = "/"}>
+            <BaseButton
+              rootClassName="base-button-root-class-name26"
+              text="Выйти"
+            ></BaseButton>
+          </div>
         </div>
       </div>
     </div>

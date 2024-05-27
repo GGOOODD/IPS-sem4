@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 
@@ -6,9 +6,12 @@ import UpperPanel from '../components/upper-panel'
 import MyInput from '../components/my-input'
 import BaseButton from '../components/base-button'
 import BottomPanel from '../components/bottom-panel'
+import FeedbackPopup from '../components/feedback-popup'
 import './feedback.css'
 
 const Feedback = (props) => {
+  const [popup, setPopup] = useState(false);
+
   return (
     <div className="feedback-container">
       <Helmet>
@@ -28,13 +31,19 @@ const Feedback = (props) => {
             placeholder="Сообщение"
             className="feedback-textarea textarea"
           ></textarea>
-          <BaseButton
-            text="Отправить"
-            rootClassName="base-button-root-class-name10"
-          ></BaseButton>
+          <div onClick={() => setPopup(true)}>
+            <BaseButton
+              text="Отправить"
+              rootClassName="base-button-root-class-name10"
+            ></BaseButton>
+          </div>
         </div>
       </div>
       <BottomPanel rootClassName="bottom-panel-root-class-name6"></BottomPanel>
+      {(() => {
+        if (popup)
+          return <FeedbackPopup closePopup={() => setPopup(false)}></FeedbackPopup>;
+      })()}
     </div>
   )
 }

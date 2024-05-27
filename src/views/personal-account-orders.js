@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 
@@ -6,16 +6,19 @@ import UpperPanelPersonalAccount from '../components/upper-panel-personal-accoun
 import OrderHistory from '../components/order-history'
 import ProductInHistory from '../components/product-in-history'
 import BottomPanel from '../components/bottom-panel'
+import LogoutPopup from '../components/logout-popup'
 import './personal-account-orders.css'
 
 const PersonalAccountOrders = (props) => {
+  const [popup, setPopup] = useState(false);
+
   return (
     <div className="personal-account-orders-container">
       <Helmet>
         <title>Personal-account-Orders - IPS</title>
         <meta property="og:title" content="Personal-account-Orders - IPS" />
       </Helmet>
-      <UpperPanelPersonalAccount rootClassName="upper-panel-personal-account-root-class-name"></UpperPanelPersonalAccount>
+      <UpperPanelPersonalAccount openPopup={() => setPopup(true)} rootClassName="upper-panel-personal-account-root-class-name"></UpperPanelPersonalAccount>
       <div className="personal-account-orders-container1">
         <span className="personal-account-orders-text">Заказы</span>
         <div className="personal-account-orders-container2">
@@ -102,6 +105,10 @@ const PersonalAccountOrders = (props) => {
         </div>
       </div>
       <BottomPanel rootClassName="bottom-panel-root-class-name8"></BottomPanel>
+      {(() => {
+        if (popup)
+          return <LogoutPopup closePopup={() => setPopup(false)}></LogoutPopup>;
+      })()}
     </div>
   )
 }
