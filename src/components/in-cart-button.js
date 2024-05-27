@@ -4,22 +4,28 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import './in-cart-button.css'
-import Cookies from "universal-cookie";
 
-
+//const [isInCart, setIsInCart] = useState(props.inCart);
 const InCartButton = (props) => {
-  const [isInCart, setIsInCart] = useState(props.inCart)
+  //let flag = false;
+  //if (props.prod.name == "EART EGLP-610 Gunmetal Black") {
+  //  flag = true;
+  //}
+  // const [isInCart, setIsInCart] = useState(flag);
 
   return (
     <div className={`in-cart-button-container ${props.rootClassName} `}>
-      {isInCart === false && (
-        <button onClick={() => {setIsInCart(true); props.func();}}
+      {props.currentInCart[props.indexInList] === false && (
+        <button onClick={() => {let curInCart = structuredClone(props.currentInCart);
+          curInCart[props.indexInList] = true;
+          props.setCurrentInCart(curInCart);
+           props.func();}}
         type="button"
         className="in-cart-button-button button" style={{ cursor: "pointer" }}>
           <span className="in-cart-button-text">В корзину</span>
         </button>
       )}
-      {isInCart === true && (
+      {props.currentInCart[props.indexInList] === true && (
         <Link to={"/cart"} className="navlink">   
           <button
           type="button"

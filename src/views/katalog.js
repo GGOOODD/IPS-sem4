@@ -41,20 +41,21 @@ const Katalog = (props) => {
   let listFilters = [];
   let info = [];
   let searchBaseOn = "";
-  let inCart = false;
+  let inCartList = [];
   const cartlen = cart.length;
   const prodlen = products.length;
   if (currentSearch == "null") {
     searchBaseOn = currentType;
     for (let i = 0; i < prodlen; i++) {
       if (products[i].type == currentType) {
-        inCart = false;
+        let inCart = false;
         for (let j = 0; j < cartlen; j++) {
           if (products[i].name == products[cart[j].index].name) {
             inCart = true;
             break;
           }
         }
+        inCartList.push(inCart);
 
         let filtlen = products[i].filters.length;
         for (let j = 0; j < filtlen; j++) {
@@ -76,8 +77,9 @@ const Katalog = (props) => {
         }
 
         let temp = {
-          inCart: inCart,
+          //inCart: inCart,
           index: i,
+          indexInList: i,
           prod: products[i],
           navigate: "/product/?name=".concat(products[i].name)
           // className="kategory-component1"
@@ -89,13 +91,14 @@ const Katalog = (props) => {
     searchBaseOn = currentSearch;
     for (let i = 0; i < prodlen; i++) {
       if (products[i].name.toLowerCase().search(currentSearch.toLowerCase()) != -1) {
-        inCart = false;
+        let inCart = false;
         for (let j = 0; j < cartlen; j++) {
           if (products[i].name == products[cart[j].index].name) {
             inCart = true;
             break;
           }
         }
+        inCartList.push(inCart);
 
         let filtlen = products[i].filters.length;
         for (let j = 0; j < filtlen; j++) {
@@ -117,8 +120,9 @@ const Katalog = (props) => {
         }
 
         let temp = {
-          inCart: inCart,
+          //inCart: inCart,
           index: i,
+          indexInList: i,
           prod: products[i],
           navigate: "/product/?name=".concat(products[i].name)
           // className="kategory-component1"
@@ -131,21 +135,24 @@ const Katalog = (props) => {
   // currentFilter = {characteristicCategory: String, values: String[]}[];
   const [currentFilter, setCurFilter] = useState([]);
   const [currentList, setCurrentList] = useState(info);
+  const [currentInCart, setCurrentInCart] = useState(inCartList);
   let curFilter = [];
 
   const updateList = () => {
     let curInfo = structuredClone(info);
+    let curInCart = structuredClone(inCartList);
     let len = curInfo.length;
     let filtlen = curFilter.length;
     let flag = false;
     for (let i = 0; i < len; i++) {
       flag = false;
+      curInfo[i].indexInList = i;
       for (let j = 0; j < curInfo[i].prod.filters.length; j++) {
         for (let k = 0; k < filtlen; k++) {
-          // == currentFilter[k].CharacteristicCategory
-          if (curInfo[i].prod.filters[j].characteristicCategory == "Производитель") {
+          if (curInfo[i].prod.filters[j].characteristicCategory == curFilter[k].characteristicCategory) {
             if (!curFilter[k].values.includes(curInfo[i].prod.filters[j].value)) {
               curInfo.splice(i, 1);
+              curInCart.splice(i, 1);
               i -= 1;
               len -= 1;
               flag = true;
@@ -156,6 +163,7 @@ const Katalog = (props) => {
         if (flag) break;
       }
     }
+    setCurrentInCart(curInCart);
     setCurrentList(curInfo);
   }
 
@@ -222,10 +230,10 @@ const Katalog = (props) => {
           </div>
           <Characteristic name="Действие акции"></Characteristic>
           {(() => {
-          let categories = [];
+          const categories = [];
           if (listFilters.length < 2) return categories;
           for (let i = 1; i < listFilters.length; i++) {
-            let mas = Array.from(listFilters[i].characteristics);
+            const mas = Array.from(listFilters[i].characteristics);
             let values = [];
             for (let j = 0; j < mas.length; j++) {
               values.push(<Characteristic name={mas[j]} characteristicCategory={listFilters[i].characteristicCategory} changeCurrentFilter={changeCurrentFilter} rootClassName="characteristic-root-class-name3"></Characteristic>)
@@ -249,10 +257,13 @@ const Katalog = (props) => {
               } else { 
                 return currentList.map((card) => (
                   <ProductCard
-                    inCart={card.inCart}
+                    //inCart={card.inCart}
+                    currentInCart={currentInCart}
+                    indexInList={card.indexInList}
                     prod={card.prod}
                     navigate={card.navigate}
                     func={() => addToCart(card.index)}
+                    setCurrentInCart={setCurrentInCart}
                   ></ProductCard>
                 ));
               }

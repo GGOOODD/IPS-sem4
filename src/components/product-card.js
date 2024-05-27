@@ -23,11 +23,25 @@ const ProductCard = (props) => {
       <span id="name" className="product-card-text1">
         {props.prod.name}
       </span>
-      <span id="cost" className="product-card-text2">
-        {props.prod.price.concat(" р.")}
-      </span>
+      {(() => {
+          let option = [];
+          if (props.prod.oldPrice == "") {
+            option = <span id="cost" className="product-card-text2">{props.prod.price.concat(" р.")}</span>;
+            return option;
+          }
+          option.push(<span className="product-card-text3">{props.prod.oldPrice.concat(" р.")}</span>);
+          option.push(<span id="cost" className="product-card-text2">{props.prod.price.concat(" р.")}</span>);
+
+          return <div className="product-card-container2" style={{display: "flex", width: "80%", flexDirection: "row-reverse"}}>
+            <div style={{width: "50%", justifyContent:"space-between"}}>{option}</div>
+          </div>;
+          })()}
       <InCartButton rootClassName="in-cart-button-root-class-name"
-      inCart={props.inCart}
+      prod={props.prod}
+      //inCart={props.inCart}
+      currentInCart={props.currentInCart}
+      setCurrentInCart={props.setCurrentInCart}
+      indexInList={props.indexInList}
       func={props.func}
       ></InCartButton>
     </div>
