@@ -11,13 +11,13 @@ const ProductInCart = (props) => {
 
   return (
     <div id={props.name} className={"product-in-cart-container ".concat(props.rootClassName)}>
+      <div className="product-in-cart-container-image" onClick={() => window.location.href = "/product/?name=".concat(props.name)}>
       <img
         alt={props.imageAltProduct}
         src={props.imageSrcProduct}
         className="product-in-cart-image"
-        onClick={() => window.location.href = "/product/?name=".concat(props.name)}
-        style={{cursor: "pointer"}}
       />
+      </div>
       <div className="product-in-cart-container1">
         <span className="product-in-cart-text">{props.type}</span>
         <span className="product-in-cart-text1">{props.name}</span>

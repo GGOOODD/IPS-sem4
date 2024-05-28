@@ -12,10 +12,20 @@
   background-color: #ffffff;
 }
 .product-in-cart-image {
-  width: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  margin: auto;
   object-fit: cover;
+}
+.product-in-cart-container-image {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
   margin-right: var(--dl-space-space-halfunit);
-  border-radius: var(--dl-radius-radius-radius8);
+  border-radius: 8px;
+  cursor: pointer
 }
 .product-in-cart-container1 {
   flex: 0 0 auto;

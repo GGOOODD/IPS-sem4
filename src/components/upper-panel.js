@@ -6,6 +6,20 @@ import PropTypes from 'prop-types'
 import UpperButton from './upper-button'
 import './upper-panel.css'
 
+//<Link to="/kategory/?name=Аккордеоны%20и%20баяны" className="">
+//  <li
+//    data-thq="thq-dropdown"
+//    className="upper-panel-dropdown6 list-item"
+//  >
+//    <div
+//      data-thq="thq-dropdown-toggle"
+//      className="upper-panel-dropdown-toggle6"
+//    >
+//      <span className="upper-panel-text6">Аккордеоны и баяны</span>
+//    </div>
+//  </li>
+//</Link>
+
 const UpperPanel = (props) => {
 
   function search(e) {
@@ -110,19 +124,6 @@ const UpperPanel = (props) => {
                   <span className="upper-panel-text5">
                     Смычковые инструменты
                   </span>
-                </div>
-              </li>
-            </Link>
-            <Link to="/kategory/?name=Аккордеоны%20и%20баяны" className="">
-              <li
-                data-thq="thq-dropdown"
-                className="upper-panel-dropdown6 list-item"
-              >
-                <div
-                  data-thq="thq-dropdown-toggle"
-                  className="upper-panel-dropdown-toggle6"
-                >
-                  <span className="upper-panel-text6">Аккордеоны и баяны</span>
                 </div>
               </li>
             </Link>

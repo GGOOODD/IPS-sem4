@@ -15,11 +15,13 @@ const ProductPage = (props) => {
   return (
     <div className={`product-page-container ${props.rootClassName} `}>
       <div className="product-page-container01">
+        <div className="product-page-container-image">
         <img
           alt={props.imageAltProduct}
           src={props.imageSrcProduct}
           className="product-page-image"
         />
+        </div>
         <div className="product-page-container02">
           <div className="product-page-container03">
             <span className="product-page-text">{props.name}</span>

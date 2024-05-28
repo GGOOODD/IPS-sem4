@@ -12,14 +12,14 @@ import './product-card.css'
 const ProductCard = (props) => {
   return (
     <div className={`product-card-container ${props.rootClassName} `}>
-      <Link to={props.navigate}>   
+      <div className="product-card-container-image" onClick={() => {window.location.href = props.navigate; window.scrollTo(0, 0);}}>
         <img
           id="img"
           alt={props.imageAlt}
           src={props.prod.image}
           className="product-card-image"
         />
-      </Link>
+      </div>
       <span id="type" className="product-card-text">
         {props.prod.type}
       </span>

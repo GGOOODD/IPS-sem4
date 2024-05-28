@@ -18,12 +18,20 @@
   margin-bottom: var(--dl-space-space-unit);
   justify-content: flex-start;
 }
-.product-page-image {
-  width: 430px;
+.product-page-container-image {
   height: 430px;
-  object-fit: cover;
+  width: 430px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
   margin-right: 20px;
-  border-radius: var(--dl-radius-radius-radius8);
+  border-radius: 8px;
+}
+.product-page-image {
+  margin: auto;
+  max-width: 430px;
+  max-height: 430px;
+  object-fit: cover;
 }
 .product-page-container02 {
   flex: 0 0 auto;

@@ -97,8 +97,9 @@ const Katalog = (props) => {
     searchBaseOn = currentSearch;
     for (let i = 0; i < prodlen; i++) {
       let prodname = structuredClone(products[i].name);
+      let typename = structuredClone(products[i].type);
       let searchname = currentSearch.toLowerCase();
-      if (prodname.toLowerCase().search(searchname) != -1) {
+      if (prodname.toLowerCase().search(searchname) != -1 || typename.toLowerCase().search(searchname) != -1) {
         addProductInInfo(i);
       }
     }
